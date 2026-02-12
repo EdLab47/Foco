@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Simulator from './components/Simulator';
 import StepGuide from './components/StepGuide';
-import ChatTutor from './components/ChatTutor';
-import { GraduationCap, Zap, BookOpen, MessageCircle } from 'lucide-react';
+import { GraduationCap, Zap } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'guide' | 'chat'>('guide');
-
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col font-sans">
       {/* Header */}
@@ -48,35 +45,9 @@ const App: React.FC = () => {
             </div>
         </div>
 
-        {/* Right Column: The Instructions & Help */}
+        {/* Right Column: The Instructions (Always visible now) */}
         <div className="lg:col-span-5 flex flex-col h-[calc(100vh-140px)] lg:h-auto lg:min-h-[600px]">
-            {/* Tabs for Mobile/Desktop Compactness */}
-            <div className="flex gap-2 mb-4 bg-slate-200 p-1 rounded-lg self-start">
-                <button 
-                    onClick={() => setActiveTab('guide')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === 'guide' ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                >
-                    <BookOpen size={16} />
-                    Guía Paso a Paso
-                </button>
-                <button 
-                    onClick={() => setActiveTab('chat')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === 'chat' ? 'bg-white text-indigo-600 shadow-sm' : 'text-slate-600 hover:text-slate-900'}`}
-                >
-                    <MessageCircle size={16} />
-                    Consultar al Profe AI
-                </button>
-            </div>
-
-            {/* Content Area for Tabs */}
-            <div className="flex-1 relative">
-                <div className={`absolute inset-0 transition-opacity duration-300 ${activeTab === 'guide' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                    <StepGuide />
-                </div>
-                <div className={`absolute inset-0 transition-opacity duration-300 ${activeTab === 'chat' ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'}`}>
-                    <ChatTutor />
-                </div>
-            </div>
+            <StepGuide />
         </div>
 
       </main>

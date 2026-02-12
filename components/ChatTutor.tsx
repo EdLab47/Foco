@@ -49,7 +49,7 @@ const ChatTutor: React.FC = () => {
             <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${msg.role === 'model' ? 'bg-indigo-100 text-indigo-600' : 'bg-slate-200 text-slate-600'}`}>
               {msg.role === 'model' ? <Bot size={18} /> : <User size={18} />}
             </div>
-            <div className={`p-3 rounded-lg max-w-[80%] text-sm ${msg.role === 'model' ? 'bg-indigo-50 text-slate-800' : 'bg-slate-800 text-white'}`}>
+            <div className={`p-3 rounded-lg max-w-[80%] text-sm whitespace-pre-wrap ${msg.role === 'model' ? 'bg-indigo-50 text-slate-800' : 'bg-slate-800 text-white'}`}>
               {msg.text}
             </div>
           </div>
